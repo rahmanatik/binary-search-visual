@@ -1,0 +1,15 @@
+span {
+  margin-right: 25px;
+  font-size: 2em;
+  padding: 5px;
+
+  &.searched {
+    text-decoration: line-through;
+    background: red;
+  }
+
+  &.found {
+    background: green;
+    color: white;
+  }
+}
