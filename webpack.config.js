@@ -15,7 +15,17 @@ module.exports = {
             filename: 'index.html',
             template: 'index.html'
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        {
+            apply: (compiler) => {
+                compiler.hooks.done.tap('DonePlugin', (stats) => {
+                    console.log('Compile is done !')
+                    setTimeout(() => {
+                        process.exit(0)
+                    })
+                });
+            }
+        }
     ],
     module: {
         rules: [
@@ -41,6 +51,6 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, '.'),
         hot: true,
-        port: 4200
+        port: 8080
     }
 };
